@@ -1,6 +1,6 @@
 <!-- <div class="row"> -->
 
-  <ul class="list-unstyled">
+  <!-- <ul class="list-unstyled">
     <li class="media" *ngFor="let article of articles">
       <img width="300px" class="mr-3" [src]="article.urlToImage" [alt]="article.title">
       <div class="media-body">
@@ -8,5 +8,29 @@
         {{ article.description }}
       </div>
     </li>
-  </ul>
+  </ul> -->
 <!-- </div> -->
+
+
+<!-- Page Header -->
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Page Heading
+            <small>Secondary Text</small>
+        </h1>
+    </div>
+</div>
+<!-- /.row -->
+
+<!-- Projects Row -->
+<div class="row">
+    <div class="col-md-6 portfolio-item" *ngFor="let article of articles">
+        <a target="_blank" [href]="article.url">
+            <img class="img-responsive" [src]="article.urlToImage" [alt]="article.title">
+        </a>
+        <h3>
+            <a target="_blank" [href]="article.url">{{ article.title }}</a>
+        </h3>
+        <p>{{ article.description }}</p>
+    </div>
+</div>
