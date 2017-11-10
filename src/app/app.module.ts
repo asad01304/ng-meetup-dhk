@@ -8,11 +8,13 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 import { appRoutes } from './app-routing.module';
+import { ArticlesComponent } from './articles/articles.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
+    ArticlesComponent,
   ],
   imports: [
     BrowserModule,

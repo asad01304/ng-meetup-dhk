@@ -5,16 +5,17 @@ import { environment as env } from '../../environments/environment';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
 
+
 @Injectable()
-export class DashboardInfoService {
+export class ArticleInfoService {
 
   constructor(
     private http: HttpClient
   ) { }
 
-  getNewsSources(lang: string = 'en'): Observable<any>{
-    return this.http
-      .get(`${env.apiHost}/sources?language=en`)
-      .map( res => res['sources'] );
+  public getLatestArticles(sourceId:string, sortBy:string): Observable<any>{
+    const url = `${env.apiHost}/articles?source=${sourceId}&sortBy=${sortBy}&apiKey=${env.apiKey}`;
+    return this.http.get(url).map(res => res['articles']);
   }
+
 }

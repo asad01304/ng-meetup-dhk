@@ -39,9 +39,6 @@ export class DashboardComponent implements OnInit {
           this.categories.add(source.category);
         });
 
-
-        console.log(this.countries);
-
       });
 
   }

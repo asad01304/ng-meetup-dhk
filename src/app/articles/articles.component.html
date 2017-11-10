@@ -1,0 +1,12 @@
+<!-- <div class="row"> -->
+
+  <ul class="list-unstyled">
+    <li class="media" *ngFor="let article of articles">
+      <img width="300px" class="mr-3" [src]="article.urlToImage" [alt]="article.title">
+      <div class="media-body">
+        <h5 class="mt-0 mb-1">{{ article.title }}</h5>
+        {{ article.description }}
+      </div>
+    </li>
+  </ul>
+<!-- </div> -->
