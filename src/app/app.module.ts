@@ -13,6 +13,7 @@ import { appRoutes } from './app-routing.module';
 import { ArticlesComponent } from './articles/articles.component';
 import { LoginComponent } from './login/login.component';
 import { IsLoggedInGuard } from './guard/is-logged-in.guard';
+import { HeaderComponent } from './header/header.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyAVSayPImoU-wCm0U5wpdI3w72omyKibO8",
@@ -29,6 +30,7 @@ export const firebaseConfig = {
     DashboardComponent,
     ArticlesComponent,
     LoginComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
