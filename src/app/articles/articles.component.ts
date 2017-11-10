@@ -13,7 +13,7 @@ export class ArticlesComponent implements OnInit {
 
   private sourceId: string;
   private sortBy: string;
-  private articles = [];
+  public articles = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -21,7 +21,7 @@ export class ArticlesComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.route.params.subscribe(params => {      
+    this.route.params.subscribe(params => {
       this.sourceId = params['sourceId'];
       this.sortBy = params['sortBy'];
       this.fetchArticles();
