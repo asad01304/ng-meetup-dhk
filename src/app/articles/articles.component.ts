@@ -34,7 +34,8 @@ export class ArticlesComponent implements OnInit {
   */
   constructor(
     private route: ActivatedRoute,
-    private service: ArticleInfoService    
+    private service: ArticleInfoService,
+    private ref: ChangeDetectorRef
   ) { }
 
 
@@ -43,6 +44,7 @@ export class ArticlesComponent implements OnInit {
   * fetch articles by sourceId
   */
   ngOnInit() {
+    this.ref.detach();
     this.route.params.subscribe(params => {
       this.sourceId = params['sourceId'];
       this.sortBy = params['sortBy'];
@@ -58,6 +60,7 @@ export class ArticlesComponent implements OnInit {
       .getLatestArticles(this.sourceId, this.sortBy)
       .subscribe(articles => {
         this.articles = articles;
+        this.ref.detectChanges();
       });
   }
 

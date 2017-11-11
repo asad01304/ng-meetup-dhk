@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ArticlesComponent } from './articles.component';
 import { ArticleInfoService } from './article-info.service';
