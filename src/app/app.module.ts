@@ -7,8 +7,6 @@ import { AngularFireModule} from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { AppComponent } from './app.component';
-
-
 import { appRoutes } from './app-routing.module';
 import { IsLoggedInGuard } from './guard/is-logged-in.guard';
 import { HeaderComponent } from './header/header.component';
