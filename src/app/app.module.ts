@@ -6,12 +6,14 @@ import { RouterModule } from '@angular/router';
 import { AngularFireModule} from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
+//import { ArticlesModule } from './articles/articles.module';
+
+
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 import { appRoutes } from './app-routing.module';
-import { ArticlesComponent } from './articles/articles.component';
 import { LoginComponent } from './login/login.component';
 import { IsLoggedInGuard } from './guard/is-logged-in.guard';
 import { HeaderComponent } from './header/header.component';
@@ -30,7 +32,6 @@ export const firebaseConfig = {
   declarations: [
     AppComponent,
     DashboardComponent,
-    ArticlesComponent,
     LoginComponent,
     HeaderComponent,
     TitleCasePipe,
@@ -42,7 +43,8 @@ export const firebaseConfig = {
     AngularFireAuthModule,
     RouterModule.forRoot(appRoutes),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    //ArticlesModule
   ],
   providers: [
     IsLoggedInGuard

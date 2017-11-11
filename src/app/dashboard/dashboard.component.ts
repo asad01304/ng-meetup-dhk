@@ -76,4 +76,8 @@ export class DashboardComponent implements OnInit {
       source => source.category == this.categoryFilter
     );
   }
+
+  trackById(source){
+    return source.id;
+  }
 }

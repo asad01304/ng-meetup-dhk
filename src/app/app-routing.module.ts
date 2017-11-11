@@ -12,6 +12,8 @@ export const appRoutes: Routes = [{
   canActivate: [ IsLoggedInGuard ],
   component: DashboardComponent
 },{
-  path: 'articles/:sourceId/:sortBy',
-  component: ArticlesComponent
+  //path: 'articles/:sourceId/:sortBy',
+  //component: ArticlesComponent
+  path: 'articles',
+  loadChildren: 'app/articles/articles.module#ArticlesModule'
 }];
