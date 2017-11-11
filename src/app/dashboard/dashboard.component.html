@@ -1,13 +1,24 @@
-<!-- <div class="row">
-  <div *ngFor="let category of categories" class="col-md-3 source">
-    <span class="badge badge-primary">{{ category }}</span>
-  </div>
-</div> -->
 
 <h1 class="my-4 text-center text-lg-left">News Sources</h1>
 
+<div class="row">
+  <div class="col-lg-3 col-md-4 col-xs-6" *ngFor="let category of categories">
+    <div class="input-group">
+      <span class="input-group-addon">
+        <input name="category" ng-control="options" type="radio"
+          [value]="category"  [(ngModel)]="categoryFilter"
+          (change)="filterSources($event)"
+          />
+        <span>{{ category| titleCase }}</span>
+      </span>
+    </div>
+  </div>
+</div>
+<br/>
+<br/>
+
 <div class="row text-center text-lg-left">
-  <div *ngFor="let source of sources"
+  <div *ngFor="let source of sources;trackBy:source?.id"
     class="col-lg-3 col-md-4 col-xs-6" >
     <a routerLink="/articles/{{source.id}}/{{source.sortBysAvailable[0]}}"  title="{{ source.name }}" class="d-block mb-4 h-100">
       <img class="img-fluid img-thumbnail" src="https://icons.better-idea.org/icon?url={{ source.url }}&amp;size=70..120..200" alt="">

@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { AngularFireModule} from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
@@ -14,6 +15,7 @@ import { ArticlesComponent } from './articles/articles.component';
 import { LoginComponent } from './login/login.component';
 import { IsLoggedInGuard } from './guard/is-logged-in.guard';
 import { HeaderComponent } from './header/header.component';
+import { TitleCasePipe } from './pipes/title-case.pipe';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyAVSayPImoU-wCm0U5wpdI3w72omyKibO8",
@@ -31,6 +33,7 @@ export const firebaseConfig = {
     ArticlesComponent,
     LoginComponent,
     HeaderComponent,
+    TitleCasePipe,
   ],
   imports: [
     BrowserModule,
@@ -38,6 +41,8 @@ export const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
     RouterModule.forRoot(appRoutes),
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     IsLoggedInGuard

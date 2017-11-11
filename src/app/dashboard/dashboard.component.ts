@@ -9,10 +9,14 @@ import { DashboardInfoService } from './dashboard-info.service';
 })
 export class DashboardComponent implements OnInit {
 
+  public allSources = [];
   public sources = [];
+
   public categories:Set<string> = new Set();
   public languages:Set<string> = new Set();
   public countries:Set<string> = new Set();
+
+  public categoryFilter = null;
 
   constructor(
     public service: DashboardInfoService
@@ -20,26 +24,23 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.fetchNewSources();
-
   }
 
   fetchNewSources(): void {
-    const
-      categories = [],
-      languages = [],
-      countries = [];
 
+    const categories = [];
     this.service.getNewsSources()
       .subscribe(sources => {
-        this.sources = sources;
-
         sources.forEach(source => {
-          this.countries.add(source.country);
-          this.languages.add(source.language);
           this.categories.add(source.category);
         });
-
+        this.sources = this.allSources = sources;
       });
+  }
 
+  filterSources(): void {
+    this.sources = this.allSources.filter(
+      source => source.category == this.categoryFilter
+    );
   }
 }
