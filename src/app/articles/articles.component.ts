@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ChangeDetectorRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ArticleInfoService } from './article-info.service';
 
@@ -17,8 +17,11 @@ export class ArticlesComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private service: ArticleInfoService
-  ) { }
+    private service: ArticleInfoService,
+    private ref: ChangeDetectorRef
+  ) {
+    this.ref.detach();
+  }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -34,7 +37,7 @@ export class ArticlesComponent implements OnInit {
       .getLatestArticles(this.sourceId, this.sortBy)
       .subscribe(articles => {
         this.articles = articles;
-        console.log(this.articles);
+        this.ref.detectChanges();
       });
   }
 
