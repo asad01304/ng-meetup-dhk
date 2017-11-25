@@ -1,27 +1,22 @@
-# NgMeetupDemo
+![picture alt](https://cdn-images-1.medium.com/fit/t/1600/480/1*jCKAPw5iNBrAPvsR2glr5w.jpeg "Angular - performace")
+# Angular - performace 
+
+## Application structure
+![picture alt](https://s3.amazonaws.com/media-p.slid.es/uploads/489548/images/4371787/Screen_Shot_2017-11-25_at_10.29.03_AM.png "Application structure")
+
+## File size optimizing
+
+* Use Ahead Of Time compilation (AOT) to compile components at the time of building your app
+```
+ng serve --aot=true
+```   
+* By default in dev mode angular-cli do not minify your js codes. Use production mode build to minify your js files
+```
+ng serve --aot=true --prod
+```
+* All js resources sould be cached in browser. While serving our app thru NginX or cloudfront we usually configure server to caches our js resources - so that with each request server no need to read files from physical media. To do so we need to maintain version controlling in js file names. To achive this use output-hashing 
+```
+ng serve --aot=true --prod output-hashing=bundles
+```
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
