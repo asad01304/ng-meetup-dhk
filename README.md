@@ -24,4 +24,13 @@ ng serve --aot=true --prod output-hashing=bundles
 * With route change only load required module, this will reduce initial loading time.
 * Check above application structure image - we modulerize AppModule into serveral chunks (DashboardModule, LoginModule, ArticleModule etc)
 
+## Shared module
+* Each common module imports some common other angular + third party modules (FormModule, HttpClientModule, AngularFireModule etc). So far each lazy loaded module imports them individually. 
+* Each common module chunk bundles it's own dependent modules, that means same module downloaded several times
+* Code manageability is not good when we are configurating third party modules in different separate moduels
+* Use shared module to import all common modules & export them as part of shared module.
+* Now App module & other lazy loaded modules will import shared modules as "forRoot". So they will not be chunked with child modules
+* example: https://github.com/asad01304/ng-meetup-dhk/blob/master/src/app/shared/shared.module.ts
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
