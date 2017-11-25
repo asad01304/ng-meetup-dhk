@@ -8,11 +8,14 @@ export const appRoutes: Routes = [{
   // path: 'login',
   // component: LoginComponent
   path: 'login',
-  loadChildren: 'app/login/login.module#LoginModule'  
+  loadChildren: 'app/login/login.module#LoginModule'
 },{
+  // path: '',
+  // canActivate: [ IsLoggedInGuard ],
+  // component: DashboardComponent
   path: '',
   canActivate: [ IsLoggedInGuard ],
-  component: DashboardComponent
+  loadChildren: 'app/dashboard/dashboard.module#DashboardModule'  
 },{
   //path: 'articles/:sourceId/:sortBy',
   //component: ArticlesComponent
