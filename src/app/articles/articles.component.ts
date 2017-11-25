@@ -35,6 +35,7 @@ export class ArticlesComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private service: ArticleInfoService,
+    /** ChangeDetectorRef controls change detection for this component */
     private ref: ChangeDetectorRef
   ) { }
 
@@ -44,7 +45,10 @@ export class ArticlesComponent implements OnInit {
   * fetch articles by sourceId
   */
   ngOnInit() {
+
+    /** Stop change detection for this component */
     this.ref.detach();
+
     this.route.params.subscribe(params => {
       this.sourceId = params['sourceId'];
       this.sortBy = params['sortBy'];
@@ -60,6 +64,7 @@ export class ArticlesComponent implements OnInit {
       .getLatestArticles(this.sourceId, this.sortBy)
       .subscribe(articles => {
         this.articles = articles;
+        /** On data araival trigger change detction manually */
         this.ref.detectChanges();
       });
   }

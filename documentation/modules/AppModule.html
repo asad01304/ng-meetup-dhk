@@ -76,6 +76,9 @@
                                 <li class="link">
                                     <a href="../modules/LoginModule.html" >LoginModule</a>
                                 </li>
+                                <li class="link">
+                                    <a href="../modules/SharedModule.html" >SharedModule</a>
+                                </li>
                         </ul>
                     </li>
             
@@ -261,6 +264,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../modules/LoginModule.html" >LoginModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/SharedModule.html" >SharedModule</a>
                                        </li>
                                </ul>
                            </li>
@@ -562,28 +568,15 @@
     <div class="tab-pane fade tab-source-code" id="source">
         <pre class="line-numbers"><code class="language-typescript">import { BrowserModule } from &#x27;@angular/platform-browser&#x27;;
 import { NgModule } from &#x27;@angular/core&#x27;;
-import { HttpClientModule } from &#x27;@angular/common/http&#x27;;
-import { FormsModule, ReactiveFormsModule } from &#x27;@angular/forms&#x27;;
 import { RouterModule } from &#x27;@angular/router&#x27;;
-import { AngularFireModule} from &#x27;angularfire2&#x27;;
-import { AngularFireAuthModule } from &#x27;angularfire2/auth&#x27;;
 
 import { AppComponent } from &#x27;./app.component&#x27;;
-
-
 import { appRoutes } from &#x27;./app-routing.module&#x27;;
 import { IsLoggedInGuard } from &#x27;./guard/is-logged-in.guard&#x27;;
 import { HeaderComponent } from &#x27;./header/header.component&#x27;;
 
 
-export const firebaseConfig &#x3D; {
-  apiKey: &quot;AIzaSyAVSayPImoU-wCm0U5wpdI3w72omyKibO8&quot;,
-  authDomain: &quot;ng-meetup-demo17.firebaseapp.com&quot;,
-  databaseURL: &quot;https://ng-meetup-demo17.firebaseio.com&quot;,
-  projectId: &quot;ng-meetup-demo17&quot;,
-  storageBucket: &quot;ng-meetup-demo17.appspot.com&quot;,
-  messagingSenderId: &quot;671661327858&quot;
-};
+import { SharedModule } from &#x27;./shared/shared.module&#x27;;
 
 @NgModule({
   declarations: [
@@ -592,12 +585,8 @@ export const firebaseConfig &#x3D; {
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
-    AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireAuthModule,
-    RouterModule.forRoot(appRoutes),
-    FormsModule,
-    ReactiveFormsModule,
+    SharedModule.forRoot(),
+    RouterModule.forRoot(appRoutes)    
   ],
   providers: [
     IsLoggedInGuard

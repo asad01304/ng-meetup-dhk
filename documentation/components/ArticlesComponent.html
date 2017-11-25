@@ -76,6 +76,9 @@
                                 <li class="link">
                                     <a href="../modules/LoginModule.html" >LoginModule</a>
                                 </li>
+                                <li class="link">
+                                    <a href="../modules/SharedModule.html" >SharedModule</a>
+                                </li>
                         </ul>
                     </li>
             
@@ -261,6 +264,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../modules/LoginModule.html" >LoginModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/SharedModule.html" >SharedModule</a>
                                        </li>
                                </ul>
                            </li>
@@ -536,7 +542,7 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <code>constructor(route: <a href="https://angular.io/docs/ts/latest/api/router/index/ActivatedRoute-interface.html" target="_blank">ActivatedRoute</a>, service: <a href="../injectables/ArticleInfoService.html">ArticleInfoService</a>)</code>
+                            <code>constructor(route: <a href="https://angular.io/docs/ts/latest/api/router/index/ActivatedRoute-interface.html" target="_blank">ActivatedRoute</a>, service: <a href="../injectables/ArticleInfoService.html">ArticleInfoService</a>, ref: <a href="https://angular.io/docs/ts/latest/api/core/index/ChangeDetectorRef-class.html" target="_blank">ChangeDetectorRef</a>)</code>
                         </td>
                     </tr>
                             <tr>
@@ -579,6 +585,15 @@
                                                       </td>
                                                       <td></td>
                                                     </tr>
+                                                    <tr>
+                                                      <td>ref</td>
+                                                      <td>
+                                                                <code><a href="https://angular.io/docs/ts/latest/api/core/index/ChangeDetectorRef-class.html" target="_blank" >ChangeDetectorRef</a></code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
                                             </tbody>
                                         </table>
                                 </div>
@@ -615,7 +630,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/app/articles/articles.component.ts:56</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/app/articles/articles.component.ts:62</a></div>
                                 </td>
                             </tr>
     
@@ -649,7 +664,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/articles/articles.component.ts:45</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/articles/articles.component.ts:47</a></div>
                                 </td>
                             </tr>
     
@@ -814,7 +829,9 @@ export class ArticlesComponent implements OnInit {
   */
   constructor(
     private route: ActivatedRoute,
-    private service: ArticleInfoService    
+    private service: ArticleInfoService,
+    /** ChangeDetectorRef controls change detection for this component */
+    private ref: ChangeDetectorRef
   ) { }
 
 
@@ -823,6 +840,10 @@ export class ArticlesComponent implements OnInit {
   * fetch articles by sourceId
   */
   ngOnInit() {
+
+    /** Stop change detection for this component */
+    this.ref.detach();
+
     this.route.params.subscribe(params &#x3D;&gt; {
       this.sourceId &#x3D; params[&#x27;sourceId&#x27;];
       this.sortBy &#x3D; params[&#x27;sortBy&#x27;];
@@ -838,6 +859,8 @@ export class ArticlesComponent implements OnInit {
       .getLatestArticles(this.sourceId, this.sortBy)
       .subscribe(articles &#x3D;&gt; {
         this.articles &#x3D; articles;
+        /** On data araival trigger change detction manually */
+        this.ref.detectChanges();
       });
   }
 
