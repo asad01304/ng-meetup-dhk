@@ -76,6 +76,9 @@
                                 <li class="link">
                                     <a href="../modules/LoginModule.html" >LoginModule</a>
                                 </li>
+                                <li class="link">
+                                    <a href="../modules/SharedModule.html" >SharedModule</a>
+                                </li>
                         </ul>
                     </li>
             
@@ -261,6 +264,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../modules/LoginModule.html" >LoginModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/SharedModule.html" >SharedModule</a>
                                        </li>
                                </ul>
                            </li>
@@ -527,11 +533,13 @@
 
 
     <div class="tab-pane fade tab-source-code" id="source">
-        <pre class="line-numbers"><code class="language-typescript">import { NgModule } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers"><code class="language-typescript">import { NgModule, ChangeDetectorRef } from &#x27;@angular/core&#x27;;
 import { CommonModule } from &#x27;@angular/common&#x27;;
 import { ArticlesComponent } from &#x27;./articles.component&#x27;;
 import { ArticleInfoService } from &#x27;./article-info.service&#x27;;
 import { RouterModule, Routes } from &#x27;@angular/router&#x27;;
+
+import { SharedModule } from &#x27;../shared/shared.module&#x27;;
 
 const routes: Routes &#x3D; [{
   path: &#x27;:sourceId/:sortBy&#x27;,
@@ -541,6 +549,7 @@ const routes: Routes &#x3D; [{
 @NgModule({
   imports: [
     CommonModule,
+    SharedModule.forRoot(),
     RouterModule.forChild(routes)
   ],
   declarations: [
