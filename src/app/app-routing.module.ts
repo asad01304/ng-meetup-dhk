@@ -5,8 +5,10 @@ import { LoginComponent } from './login/login.component';
 import { IsLoggedInGuard } from './guard/is-logged-in.guard';
 
 export const appRoutes: Routes = [{
+  // path: 'login',
+  // component: LoginComponent
   path: 'login',
-  component: LoginComponent
+  loadChildren: 'app/login/login.module#LoginModule'  
 },{
   path: '',
   canActivate: [ IsLoggedInGuard ],

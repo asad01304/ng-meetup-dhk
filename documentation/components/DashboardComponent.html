@@ -67,6 +67,12 @@
                                 <li class="link">
                                     <a href="../modules/AppModule.html" >AppModule</a>
                                 </li>
+                                <li class="link">
+                                    <a href="../modules/ArticlesModule.html" >ArticlesModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../modules/LoginModule.html" >LoginModule</a>
+                                </li>
                         </ul>
                     </li>
             
@@ -243,6 +249,12 @@
                    >
                                        <li class="link">
                                            <a href="../modules/AppModule.html" >AppModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/ArticlesModule.html" >ArticlesModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/LoginModule.html" >LoginModule</a>
                                        </li>
                                </ul>
                            </li>
@@ -520,6 +532,9 @@
                             <li>
                                  <a href="#ngOnInit">ngOnInit</a>
                             </li>
+                            <li>
+                                 <a href="#trackById">trackById</a>
+                            </li>
                         </ul>
                     </td>
                 </tr>
@@ -681,6 +696,66 @@
                                     <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
     
                                 </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="trackById"></a>
+                            <span class="name"><b> trackById</b><a href="#trackById"><span class="fa fa-link"></span></a></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>trackById(source: )</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">src/app/dashboard/dashboard.component.ts:80</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                    <td>Type</td>
+                                                    <td>Optional</td>
+                                                    <td>Description</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                      <td>source</td>
+                                                      <td>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+    
+                                </div>
+                                    <div class="io-description">
+                                        
+                                    </div>
                         </td>
                     </tr>
                 </tbody>
@@ -990,6 +1065,10 @@ export class DashboardComponent implements OnInit {
       source &#x3D;&gt; source.category &#x3D;&#x3D; this.categoryFilter
     );
   }
+
+  trackById(source){
+    return source.id;
+  }
 }
 </code></pre>
     </div>
@@ -1015,7 +1094,7 @@ export class DashboardComponent implements OnInit {
 &lt;br/&gt;
 
 &lt;div class&#x3D;&quot;row text-center text-lg-left&quot;&gt;
-  &lt;div *ngFor&#x3D;&quot;let source of sources;&quot;
+  &lt;div *ngFor&#x3D;&quot;let source of sources;trackBy:trackById&quot;
     class&#x3D;&quot;col-lg-3 col-md-4 col-xs-6&quot; &gt;
     &lt;a routerLink&#x3D;&quot;/articles/{{source.id}}/{{source.sortBysAvailable[0]}}&quot;  title&#x3D;&quot;{{ source.name }}&quot; class&#x3D;&quot;d-block mb-4 h-100&quot;&gt;
       &lt;img class&#x3D;&quot;img-fluid img-thumbnail&quot; src&#x3D;&quot;https://icons.better-idea.org/icon?url&#x3D;{{ source.url }}&amp;amp;size&#x3D;70..120..200&quot; alt&#x3D;&quot;&quot;&gt;
@@ -1048,7 +1127,7 @@ export class DashboardComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><h1 class="my-4 text-center text-lg-left">News Sources</h1><div class="row">  <div class="col-lg-3 col-md-4 col-xs-6" *ngFor="let category of categories">    <div class="input-group">      <span class="input-group-addon">        <input name="category" ng-control="options" type="radio"          [value]="category"  [(ngModel)]="categoryFilter"          (change)="filterSources($event)"          />        <span>{{ category| titleCase }}</span>      </span>    </div>  </div></div><br/><br/><div class="row text-center text-lg-left">  <div *ngFor="let source of sources;"    class="col-lg-3 col-md-4 col-xs-6" >    <a routerLink="/articles/{{source.id}}/{{source.sortBysAvailable[0]}}"  title="{{ source.name }}" class="d-block mb-4 h-100">      <img class="img-fluid img-thumbnail" src="https://icons.better-idea.org/icon?url={{ source.url }}&amp;size=70..120..200" alt="">    </a>  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><h1 class="my-4 text-center text-lg-left">News Sources</h1><div class="row">  <div class="col-lg-3 col-md-4 col-xs-6" *ngFor="let category of categories">    <div class="input-group">      <span class="input-group-addon">        <input name="category" ng-control="options" type="radio"          [value]="category"  [(ngModel)]="categoryFilter"          (change)="filterSources($event)"          />        <span>{{ category| titleCase }}</span>      </span>    </div>  </div></div><br/><br/><div class="row text-center text-lg-left">  <div *ngFor="let source of sources;trackBy:trackById"    class="col-lg-3 col-md-4 col-xs-6" >    <a routerLink="/articles/{{source.id}}/{{source.sortBysAvailable[0]}}"  title="{{ source.name }}" class="d-block mb-4 h-100">      <img class="img-fluid img-thumbnail" src="https://icons.better-idea.org/icon?url={{ source.url }}&amp;size=70..120..200" alt="">    </a>  </div></div></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ArticlesComponent', 'selector': 'app-articles'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'LoginComponent', 'selector': 'app-login'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'DashboardComponent'};

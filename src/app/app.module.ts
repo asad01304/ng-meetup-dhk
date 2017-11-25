@@ -14,7 +14,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 import { appRoutes } from './app-routing.module';
-import { LoginComponent } from './login/login.component';
+// import { LoginComponent } from './login/login.component';
 import { IsLoggedInGuard } from './guard/is-logged-in.guard';
 import { HeaderComponent } from './header/header.component';
 import { TitleCasePipe } from './pipes/title-case.pipe';
@@ -31,8 +31,7 @@ export const firebaseConfig = {
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent,
-    LoginComponent,
+    DashboardComponent,    
     HeaderComponent,
     TitleCasePipe,
   ],
