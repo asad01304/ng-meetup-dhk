@@ -7,14 +7,24 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/do';
 
-
-
+/**
+* Logged in status guard
+*/
 @Injectable()
 export class IsLoggedInGuard implements CanActivate {
+
+  /**
+  * constructor
+  */
   constructor(
     private auth: AngularFireAuth,
     private router: Router
   ){ }
+
+  /**
+  * Guard canActivate,
+  * redirect to login if not loggedIn
+  */
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> {

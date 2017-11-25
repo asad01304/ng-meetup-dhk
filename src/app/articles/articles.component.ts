@@ -2,7 +2,9 @@ import { Component, OnInit, ViewEncapsulation, ChangeDetectorRef } from '@angula
 import { Router, ActivatedRoute } from '@angular/router';
 import { ArticleInfoService } from './article-info.service';
 
-
+/**
+* Atricle details component
+*/
 @Component({
   selector: 'app-articles',
   templateUrl: './articles.component.html',
@@ -11,18 +13,35 @@ import { ArticleInfoService } from './article-info.service';
 })
 export class ArticlesComponent implements OnInit {
 
+  /**
+  * Source id param
+  */
   private sourceId: string;
+
+  /**
+  * Sort by params
+  */
   private sortBy: string;
+
+  /**
+  * List of articles
+  */
   public articles = [];
 
+  /**
+  * Constructor
+  *
+  */
   constructor(
     private route: ActivatedRoute,
-    private service: ArticleInfoService,
-    private ref: ChangeDetectorRef
-  ) {
-    this.ref.detach();
-  }
+    private service: ArticleInfoService    
+  ) { }
 
+
+  /**
+  * OnInit - set params from url
+  * fetch articles by sourceId
+  */
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.sourceId = params['sourceId'];
@@ -31,13 +50,14 @@ export class ArticlesComponent implements OnInit {
     });
   }
 
+  /**
+  * Fetch articles by sourceId
+  */
   private fetchArticles() {
-
     this.service
       .getLatestArticles(this.sourceId, this.sortBy)
       .subscribe(articles => {
         this.articles = articles;
-        this.ref.detectChanges();
       });
   }
 
