@@ -18,7 +18,7 @@ ng serve --aot=true --prod
 ```
 ng serve --aot=true --prod output-hashing=bundles
 ```
-## Use lazy loading
+## Lazy loading
 
 * Use angular's CommonModule module to modulerize your application into small chunks of logical unit. 
 * With route change only load required module, this will reduce initial loading time.
@@ -31,6 +31,14 @@ ng serve --aot=true --prod output-hashing=bundles
 * Use shared module to import all common modules & export them as part of shared module.
 * Now App module & other lazy loaded modules will import shared modules as "forRoot". So they will not be chunked with child modules
 * example: https://github.com/asad01304/ng-meetup-dhk/blob/master/src/app/shared/shared.module.ts
+
+## trackBy
+* When angular reders an array of objects, it has no clue which itesm changed and which one to re-render. Instead angular re-render the entire array 
+* using trackBy we can help angular to understand which array element correspond to which dom row. Then angular will only re-render the dom correspond to changed array item.
+* example:
+  * https://github.com/asad01304/ng-meetup-dhk/blob/fabf81acf505d4a8925c4eec326e07e2bbcc262f/src/app/dashboard/dashboard.component.html#L21
+  * https://github.com/asad01304/ng-meetup-dhk/blob/fabf81acf505d4a8925c4eec326e07e2bbcc262f/src/app/dashboard/dashboard.component.ts#L80
+
 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
