@@ -2,7 +2,7 @@
 # Angular - performace 
 
 ## Application structure
-![picture alt](https://s3.amazonaws.com/media-p.slid.es/uploads/489548/images/4371787/Screen_Shot_2017-11-25_at_10.29.03_AM.png "Application structure")
+![picture alt](https://s3.amazonaws.com/media-p.slid.es/uploads/489548/images/4371791/Screen_Shot_2017-11-25_at_10.56.41_AM.png "Application structure")
 
 ## File size optimizing
 
@@ -18,5 +18,10 @@ ng serve --aot=true --prod
 ```
 ng serve --aot=true --prod output-hashing=bundles
 ```
+## Use lazy loading
+
+* Use angular's CommonModule module to modulerize your application into small chunks of logical unit. 
+* With route change only load required module, this will reduce initial loading time.
+* Check above application structure image - we modulerize AppModule into serveral chunks (DashboardModule, LoginModule, ArticleModule etc)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
